@@ -60,7 +60,7 @@ class MyLinkedList {
             return -1;
         }
         ListNode cur=head;
-        for (int i = 0; i <= index ; i++) {
+        for (int i = 0; i <=index ; i++) {
             cur=cur.next;
         }
         return cur.val;
