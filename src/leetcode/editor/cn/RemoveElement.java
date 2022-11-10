@@ -40,14 +40,18 @@ public class RemoveElement{
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {//双指针相向
     public int removeElement(int[] nums, int val) {
-        int left=0,right=nums.length-1;
-        while (left<=right){
-            while (left<=right&&nums[left]!=val)
-                left++;
-            while (left<=right&&nums[right]==val)
+        int left=0;
+        int right=nums.length-1;
+        while (right>=0&&nums[right]==val)
+            right--;
+        while (left<=right){   //注意:因为返回为数组长度取等号
+            if (nums[left]==val) {
+                nums[left]=nums[right];
                 right--;
-            if (left<right)
-                nums[left++]=nums[right--];
+            }
+            while (right>=0&&nums[right]==val)
+                right--;
+            left++;
         }
         return left;
     }

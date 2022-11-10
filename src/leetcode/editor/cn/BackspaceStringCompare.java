@@ -29,45 +29,43 @@ public class BackspaceStringCompare{
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public boolean backspaceCompare(String s, String t) {
-        int i=s.length()-1;
-        int j=t.length()-1;
-        int s_Skip=0,t_Skip=0;
-        while (i>=0||j>=0){
-            while (i>=0){
-                if (s.charAt(i)=='#'){
-                    s_Skip++;
-                    i--;
-                }else if (s_Skip>0){
-                    s_Skip--;
-                    i--;
-                }else
+        int sfast = s.length() - 1;
+        int tfast = t.length() - 1;
+        int snum = 0, tnum = 0;
+        while (sfast >= 0 || tfast >= 0) {
+            while (sfast >= 0) {
+                if (s.charAt(sfast) == '#') {
+                    snum++;
+                    sfast--;
+                } else if (snum > 0) {
+                    snum--;
+                    sfast--;
+                } else
+                    break;
+                ;
+            }
+            while (tfast >= 0) {
+                if (t.charAt(tfast) == '#') {
+                    tnum++;
+                    tfast--;
+                } else if (tnum > 0) {
+                    tnum--;
+                    tfast--;
+                } else
                     break;
             }
-            while (j>=0){
-                if (t.charAt(j)=='#'){
-                    t_Skip++;
-                    j--;
-                }else if (t_Skip>0){
-                    t_Skip--;
-                    j--;
-                }else
-                    break;
-            }
-            if (i>=0&&j>=0){
-                if (s.charAt(i)!=t.charAt(j))
+            if (sfast >= 0 && tfast >= 0) {
+                if (s.charAt(sfast) != t.charAt(tfast))
                     return false;
-            }else {
-                if (i>=0||j>=0)
-                    return false;
+            } else if (sfast >= 0 || tfast >= 0) {
+                return false;
             }
-
-            i--;
-            j--;
+            sfast--;
+            tfast--;
         }
-
         return true;
-
     }
+
 }
 //leetcode submit region end(Prohibit modification and deletion)
 

@@ -19,7 +19,7 @@ package leetcode.editor.cn;
 
 // 示例 1：
 //输入：nums = [1,1,2]
-//输出：2, nums = [1,2,_]
+//输出：2, nums = [1,2]
 //解释：函数应该返回新的长度 2 ，并且原数组 nums 的前两个元素被修改为 1, 2 。不需要考虑数组中超出新长度后面的元素。
 //
 // 示例 2：
@@ -42,17 +42,17 @@ public class RemoveDuplicatesFromSortedArray{
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public int removeDuplicates(int[] nums) {
-        if (nums==null||nums.length==0)
+        if (nums.length==0 || nums==null)
             return 0;
-        int sowIndex=0,fastIndex=1;
-        while (fastIndex<nums.length){
-            if(nums[sowIndex]!=nums[fastIndex]) {
-                nums[sowIndex+1]=nums[fastIndex];//++sowIndex不起作用
-                sowIndex++;
+        int slow=0;
+        int fast=1;
+        while (fast<nums.length){
+            if (nums[fast]!=nums[slow]){
+                nums[++slow]=nums[fast];
             }
-            fastIndex++;
+            fast++;
         }
-        return sowIndex+1;
+        return slow+1;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)

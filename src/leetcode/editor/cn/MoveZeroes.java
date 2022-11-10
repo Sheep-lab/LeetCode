@@ -24,16 +24,17 @@ public class MoveZeroes{
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public void moveZeroes(int[] nums) {
-        if(nums.length==0||nums==null)
-            return ;
-        int sowIndex=0;
-        for (int fastIndex=0; fastIndex <nums.length ; fastIndex++) {
-            if (nums[fastIndex]!=0){
-                int temp=nums[fastIndex];
-                nums[fastIndex]=nums[sowIndex];
-                nums[sowIndex++]=temp;
+        if (nums.length==0||nums==null)
+            return;
+        int left=0;
+        for (int right = 0; right <nums.length ; right++) {
+            if (nums[right]!=0){
+                int temp=nums[right];
+                nums[right]=nums[left];
+                nums[left++]=temp;
             }
         }
+
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
